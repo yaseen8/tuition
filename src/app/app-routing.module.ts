@@ -9,12 +9,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    loadChildren: './pages/home/home.module#HomePageModule'
   },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  }
+  { path: 'course-list', loadChildren: './pages/course-list/course-list.module#CourseListPageModule' },
+  { path: 'course-filter-modal', loadChildren: './modal/course-filter-modal/course-filter-modal.module#CourseFilterModalPageModule' },
+  { path: 'course-detail', loadChildren: './pages/course-detail/course-detail.module#CourseDetailPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' }
 ];
 
 @NgModule({

@@ -18,6 +18,14 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+      <ion-footer>
+        <ion-list lines="none">
+          <ion-item >
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            <ion-label (click)="goToLogin()">Login</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-footer>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

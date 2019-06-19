@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Filter</ion-title>
+    <ion-label slot="end" (click)="dismiss()">Close</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Study Level</ion-label>
+          <ion-select (ngModelChange) = "getSubjects(studyLevel)">
+            <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list>
+
+        <ion-item>
+          <ion-label>Subject/Course</ion-label>
+          <ion-select >
+            <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime display-format="DD MMM, YYYY"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <ion-button color="primary" expand="block" (click)="dismiss()">Search</ion-button>
+
+</ion-content>
