@@ -12,6 +12,6 @@ export class StudyLevelService {
               private http: HttpClient) { }
 
   getStudyLevelList() {
-   return this.http.get(this.apiService.getRoute('5d07c9e334000059005d94e6'));
+   return this.http.get(this.apiService.getRoute('study_level'));
   }
 }

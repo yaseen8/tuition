@@ -10,7 +10,7 @@ export class SubjectService {
   constructor(private apiService: ApiService,
               private http: HttpClient) { }
 
-  getSubjectsList() {
-   return this.http.get(this.apiService.getRoute('5d07ce2e34000059005d9500'));
+  getSubjectsList(id) {
+   return this.http.get(this.apiService.getRoute('course/get_by_study_level/' + id));
   }
 }

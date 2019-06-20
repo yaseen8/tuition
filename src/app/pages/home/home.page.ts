@@ -29,7 +29,7 @@ export class HomePage {
   }
 
     getSubjects(id) {
-        this.subjectService.getSubjectsList()
+        this.subjectService.getSubjectsList(id)
             .subscribe(
                 (resp : any) => {
                     this.subjectList = resp;
