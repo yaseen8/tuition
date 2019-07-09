@@ -14,7 +14,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401) {
                 // auto logout if 401 response returned from api
-                // this.storage.clear();
+                this.storage.clear();
                 // location.reload(true);
             }
 

@@ -23,14 +23,12 @@
     <ion-row>
       <ion-col size="10" offset="1">
         <ion-list>
-
           <ion-item>
             <ion-label>Study Level</ion-label>
             <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
               <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
             </ion-select>
           </ion-item>
-
         </ion-list>
       </ion-col>
     </ion-row>
@@ -38,46 +36,20 @@
     <ion-row>
       <ion-col size="10" offset="1">
         <ion-list>
-
           <ion-item>
             <ion-label>Subject/Course</ion-label>
-            <ion-select [(ngModel)]="subject">
+            <ion-select [(ngModel)]="course">
               <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
             </ion-select>
           </ion-item>
-
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3" offset="1">
-        <ion-button color="primary">Search</ion-button>
+        <ion-button color="primary" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-card>
-    <ion-item>
-      <ion-card-title (click) ="courseDetail()">Chemistry</ion-card-title>
-      <ion-button fill="outline" slot="end">3000 PKR</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-chip>
-        <ion-label>Mon</ion-label>
-      </ion-chip>
-      <ion-chip>
-        <ion-label>Tue</ion-label>
-      </ion-chip>
-      <ion-chip>
-        <ion-label>Wed</ion-label>
-      </ion-chip>
-    </ion-item>
-
-    <ion-card-content>
-      This is content, without any paragraph or header tags,
-      within an ion-card-content element.This is content, without any paragraph or header tags,
-      within an ion-card-content element.
-    </ion-card-content>
-  </ion-card>
 
 </ion-content>

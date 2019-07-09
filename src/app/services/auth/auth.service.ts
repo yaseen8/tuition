@@ -61,4 +61,12 @@ export class AuthService {
     clearAuthorized() {
         this.tokenService.clearToken();
     }
+
+    checkLoggedIn(){
+        return this.http.get(this.apiService.getRoute('logged_in_user'));
+    }
+
+    logout() {
+        return this.http.post(this.apiService.getRoute('logout'), {});
+    }
 }

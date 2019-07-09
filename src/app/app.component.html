@@ -2,7 +2,7 @@
   <ion-split-pane>
     <ion-menu>
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="primary">
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
@@ -20,10 +20,14 @@
       </ion-content>
       <ion-footer>
         <ion-list lines="none">
-          <ion-item >
+          <ion-item *ngIf = "!userLogin">
             <ion-icon name="person-add" slot="start"></ion-icon>
-            <ion-label (click)="goToLogin()">Login</ion-label>
+            <ion-label (click)="goToLogin()">Sign In</ion-label>
           </ion-item>
+          <ion-item *ngIf = "userLogin">
+              <ion-icon name="log-out" slot="start"></ion-icon>
+              <ion-label (click)="logout()">Sign Out</ion-label>
+            </ion-item>
         </ion-list>
       </ion-footer>
     </ion-menu>

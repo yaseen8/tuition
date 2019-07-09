@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-    private webRoot: string = 'http://127.0.0.1:8000/api/';
+    private webRoot: string = 'http://www.alphazzz.com/api/';
+    // private webRoot: string = 'http://127.0.0.1:8000/api/';
     private meidaServer: string = 'https://storage.googleapis.com/ainilm-com-bucket/';
 
   constructor() { }

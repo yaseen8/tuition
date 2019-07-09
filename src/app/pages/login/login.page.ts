@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {TokenService} from "../../services/auth/token.service";
 import {NavController} from "@ionic/angular";
+import { ToastService } from '../../services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginPage implements OnInit {
 
   constructor(private authService : AuthService,
               private tokenService : TokenService,
-              private navCtrl : NavController) { }
+              private navCtrl : NavController,
+              private toastService : ToastService) { }
 
   ngOnInit() {
   }
@@ -22,20 +24,24 @@ export class LoginPage implements OnInit {
   login() {
     const data = {
       'username' : this.username,
-        'password' : this.password
+      'password' : this.password
     }
     this.authService.login(data)
         .subscribe(
             (resp) => {
                 this.tokenService.setToken(resp['token']);
+                this.toastService.presentToast('Login Successfull');
                 this.navCtrl.navigateForward('home');
-              console.log(resp);
 
             },
             (error) => {
-              console.log(error);
+              this.toastService.presentToast('Something went wrong, try again');
             }
         )
+  }
+
+  goToRegister() {
+    this.navCtrl.navigateForward('register');
   }
 
 }

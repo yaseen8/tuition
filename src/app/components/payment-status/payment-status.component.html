@@ -1,0 +1,32 @@
+
+<ion-content>
+  <ng-container *ngIf= "showData">
+  <ion-card *ngFor = "let payment of userPayments">
+      <ion-item>
+        <ion-card-title >{{payment.book_course.new_course.title}}</ion-card-title>
+        <ion-button slot="end" *ngIf="status === 'pending'">Upload Image</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-chip *ngFor = "let day of payment.book_course.new_course.schedule">
+          <ion-label>{{day.day | days }}</ion-label>
+        </ion-chip>
+      </ion-item>
+  
+      <ion-card-content>
+       {{payment.book_course.new_course.description}}
+        <ion-item-divider></ion-item-divider>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>Starting Date {{payment.book_course.new_course.start_date | date : mediumDate }}</ion-label>
+            </ion-col>
+            <ion-col class="ion-text-right">
+                <ion-label>End Date {{payment.book_course.new_course.end_date | date : mediumDate }}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <h2 *ngIf="!showData" class="margin-all">No record found</h2>
+</ion-content>

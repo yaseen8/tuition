@@ -12,9 +12,7 @@ export class TokenService {
 
     constructor(private storage: Storage) {
         this.storage.get('auth-token').then((tokenValue) => {
-          console.log(tokenValue);
             if (tokenValue) {
-              console.log('token cal', tokenValue);
                 this.token = tokenValue;
                 this.tokenStatus.next(this.token);
             }

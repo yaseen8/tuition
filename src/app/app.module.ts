@@ -14,16 +14,24 @@ import { IonicStorageModule } from '@ionic/storage';
 import {HttpAuthInterceptor} from "./services/interceptor/http.auth.interceptor";
 import {HttpAdditionalHeaderInterceptor} from "./services/interceptor/http-additional-header.interceptor";
 import {HttpErrorInterceptor} from "./services/interceptor/http-error.interceptor";
+import { FormsModule } from '@angular/forms';
+import { BookingHistoryPage } from './pages/booking-history/booking-history.page';
+import { SharedModuleModule } from './shared-module/shared-module.module';
+import { PaymentHistoryPage } from './pages/payment-history/payment-history.page';
+import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
+import { BookingStatusComponent } from './components/booking-status/booking-status.component';
 
 @NgModule({
-  declarations: [AppComponent, CourseFilterModalPage],
-  entryComponents: [CourseFilterModalPage],
+  declarations: [AppComponent, CourseFilterModalPage, BookingHistoryPage, PaymentHistoryPage, PaymentStatusComponent, BookingStatusComponent],
+  entryComponents: [CourseFilterModalPage, BookingHistoryPage, PaymentHistoryPage, PaymentStatusComponent, BookingStatusComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    FormsModule,
+    SharedModuleModule,
     AppRoutingModule,
       HttpClientModule,
-      IonicStorageModule.forRoot()
+      IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,

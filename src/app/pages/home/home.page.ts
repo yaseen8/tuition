@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {StudyLevelService} from "../../services/study-level/study-level.service";
 import {SubjectService} from "../../services/subjects/subject.service";
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,11 @@ import {SubjectService} from "../../services/subjects/subject.service";
 export class HomePage {
   studyLevelList = [] ;
   subjectList   = [];
+  course : number;
 
   constructor(private studyLevelService : StudyLevelService,
-              private subjectService : SubjectService) {}
+              private subjectService : SubjectService,
+              private navCtrl : NavController) {}
 
     ngOnInit(){
         this.getStudyLevelList()
@@ -35,5 +38,9 @@ export class HomePage {
                     this.subjectList = resp;
                 }
             )
+    }
+
+    getCourseList() {
+        this.navCtrl.navigateForward('course-list/' + this.course)
     }
 }
