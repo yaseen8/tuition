@@ -4,11 +4,22 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
-
-.margin-all {
-    margin: 30%;
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+.alpha-bg-lite{
+  background: url(src/assets/images/bg-lite.png) no-repeat top center #ffffff;
+  background-size: cover;
+}
+.alpha-header{
+  padding-top: 0 !important;
+}
+.section-head{
+  h2{
+    font-family: 'Raleway', sans-serif;
+    margin: 30px 0 0 15px;
+    font-size: 25px;
+    color: #333;
   }
-
-  .underline {
-    text-decoration: underline;
-  }
+}
+.alpha-button{
+  width:100%;
+}

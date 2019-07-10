@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="alpha-header">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,47 +9,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <!--<ion-card class="welcome-card">-->
-      <ion-img src="/assets/tution.png"></ion-img>
-    <!--</ion-card>-->
+<ion-content color='light' class="alpha-bg-lite">
+    <ion-card class="welcome-card">
+      <h4>You have 0 ongoing classes</h4>
+      <h1>Start your first<br>course today!</h1>
+    </ion-card>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="8" offset="1">
-        <h2>Start Your Online Tuition</h2>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="10" offset="1">
-        <ion-list>
-          <ion-item>
-            <ion-label>Study Level</ion-label>
-            <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
-              <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
+    <ion-card class="welcome-card section-card">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="section-head">
+            <h2>Find suitable course</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label>Study Level</ion-label>
+                <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
+                  <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col size="10" offset="1">
-        <ion-list>
-          <ion-item>
-            <ion-label>Subject/Course</ion-label>
-            <ion-select [(ngModel)]="course">
-              <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3" offset="1">
-        <ion-button color="primary" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label>Subject/Course</ion-label>
+                <ion-select [(ngModel)]="course">
+                  <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="secondary" class="alpha-button" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
 </ion-content>
