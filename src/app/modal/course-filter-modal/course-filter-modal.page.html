@@ -5,8 +5,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
 
+    <ion-card class="welcome-card">
       <ion-list>
         <ion-item>
           <ion-label>Study Level</ion-label>
@@ -27,12 +28,16 @@
         </ion-item>
 
       </ion-list>
+
       <ion-list>
         <ion-item>
           <ion-label>Start Date</ion-label>
           <ion-datetime display-format="DD MMM, YYYY" [(ngModel)]= "startDate"></ion-datetime>
         </ion-item>
       </ion-list>
-      <ion-button color="primary" expand="block" (click)="dismiss()">Search</ion-button>
+    </ion-card>
+    <ion-card class="welcome-card section-card">
+        <ion-button color="secondary" expand="block" (click)="dismiss()">Search</ion-button>
+    </ion-card>
 
 </ion-content>

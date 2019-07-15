@@ -14,9 +14,9 @@
     <ion-button color="light" expand="block" (click)="presentModal()">Search Courses</ion-button>
   </ion-card>
   <ng-container *ngIf="showData">
-  <ion-card *ngFor = "let sub of courseList" class="welcome-card section-card" (click) ="courseDetail(sub.id)">
+  <ion-card *ngFor = "let sub of courseList" class="welcome-card section-card">
     <ion-item>
-      <ion-card-title size="4">{{sub.title}}</ion-card-title>
+      <ion-card-title size="4" (click) ="courseDetail(sub.id)">{{sub.title}}</ion-card-title>
       <ion-button fill="outline" slot="end">{{sub.course_fee.fee}} PKR</ion-button>
     </ion-item>
     <ion-item>
@@ -36,5 +36,11 @@
     </ion-card-content>
   </ion-card>
 </ng-container>
-<h2 *ngIf="!showData" class="margin-all">No record found</h2>
+<ng-container *ngIf="!showData">
+  <ion-card class="welcome-card">
+    <ion-card-content>
+      <h2>No records :(</h2>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
 </ion-content>
