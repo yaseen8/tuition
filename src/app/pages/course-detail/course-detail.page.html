@@ -10,18 +10,40 @@
 </ion-header>
 
 <ion-content  color='light'>
-  <ion-img src="/assets/tution.png"></ion-img>
-
-  <ion-list>
+  <ion-card class="welcome-card section-card">
     <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-avatar>
       <ion-label>
-        <h3>{{courseDetail.title}}</h3>
-        <p>{{name}}</p>
+        <h1>{{courseDetail.title}}</h1>
       </ion-label>
-      <ion-button fill="outline" slot="end">{{fee}} PKR</ion-button>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-label class="author">{{name}}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="fee">{{fee}} PKR</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="date">Starting: 01 June,2019</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="date">Ending: 01 June,2019</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-chip>
+        <ion-label>Mon</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>Wed</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>Fri</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>Sat</ion-label>
+      </ion-chip>
+    </ion-item>
+    <ion-item>
+      <ion-label class="time">02:00PM to 04:00PM</p></ion-label>
+    </ion-item>
+  </ion-card>
 </ion-content>

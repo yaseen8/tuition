@@ -8,23 +8,23 @@
 </ion-header>
 
 <ion-content color='light'>
-
-
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input [(ngModel)]="username" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" >Password</ion-label>
-      <ion-input [(ngModel)]="password" type="password" ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button color="primary" expand="block" (click)="login()">Sign In</ion-button>
-  <div>
-      <ion-label>Dont have account!
-          <a class="underline" (click) = "goToRegister()">Register Now</a>
-      </ion-label>
-    </div>
+  <ion-card class="welcome-card">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input [(ngModel)]="username" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" >Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password" ></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card class="welcome-card section-card">
+    <ion-button color="secondary" expand="block" (click)="login()">Sign In</ion-button>
+  </ion-card>
+  <ion-card class="welcome-card section-card">
+    <ion-button color="tertiary" expand="block" (click) = "goToRegister()">New? Register Now</ion-button>
+  </ion-card>
 
 </ion-content>

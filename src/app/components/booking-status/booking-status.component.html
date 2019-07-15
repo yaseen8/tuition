@@ -1,7 +1,6 @@
-
-<ion-content>
+<ion-content color="light">
   <ng-container *ngIf = "showData">
-  <ion-card *ngFor = "let book of userBooking">
+  <ion-card *ngFor = "let book of userBooking" class="welcome-card section-card">
       <ion-item>
         <ion-card-title>{{book.new_course.title}}</ion-card-title>
         <ion-button fill="outline" slot="end">{{book.new_course.course_fee.fee}} PKR</ion-button>
@@ -11,22 +10,28 @@
           <ion-label>{{day.day | days }}</ion-label>
         </ion-chip>
       </ion-item>
-  
+      <ion-item>
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <ion-label class="date">Starting Date {{book.new_course.start_date | date : mediumDate }}</ion-label>
+                  </ion-col>
+                  <ion-col class="ion-text-right">
+                      <ion-label class="date">End Date {{book.new_course.end_date | date : mediumDate }}</ion-label>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-item>
       <ion-card-content>
        {{book.new_course.description}}
-        <ion-item-divider></ion-item-divider>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-label>Starting Date {{book.new_course.start_date | date : mediumDate }}</ion-label>
-            </ion-col>
-            <ion-col class="ion-text-right">
-                <ion-label>End Date {{book.new_course.end_date | date : mediumDate }}</ion-label>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
       </ion-card-content>
     </ion-card>
   </ng-container>
-  <h2 *ngIf="!showData" class="margin-all">No record found</h2>
+  <ng-container *ngIf="!showData">
+      <ion-card>
+          <ion-card-content>
+              <h2>No records :(</h2>
+          </ion-card-content>
+      </ion-card>
+  </ng-container>
 </ion-content>
