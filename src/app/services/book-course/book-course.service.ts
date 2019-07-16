@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { HttpClient } from '@angular/common/http';
+import { TouchSequence } from 'selenium-webdriver';
 // import { File } from '@ionic-native/file';
 
 @Injectable({
@@ -21,5 +22,8 @@ export class BookCourseService {
 
   getUserPayments(status) {
     return this.http.get(this.apiService.getRoute('get_user_payments', {'status' : status}))    
+  }
+  checkUserBookedCourse(id) {
+    return this.http.get(this.apiService.getRoute('check_already_booked_course', {'id' : id}));
   }
 }

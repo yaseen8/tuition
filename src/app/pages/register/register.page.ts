@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { ToastService } from '../../services/toast/toast.service';
 import { LoaderService } from '../../services/loader/loader.service';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { strongPasswordValidator } from '../../validators/strong-password-validator';
 
 @Component({
   selector: 'app-register',
@@ -9,68 +13,106 @@ import { LoaderService } from '../../services/loader/loader.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  name : string;
-  username : string;
-  password : string;
-  email : string;
-  phone : string;
-  userExist : boolean = false;
+  userNameExist : boolean = false;
+  emailExist : boolean = false;
+  courseId : number;
+
+  fg = new FormGroup({
+    name : new FormControl('', [
+      Validators.required,
+      Validators.pattern('[a-zA-Z]+')
+    ]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[a-zA-Z0-9-_]+'),
+  ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+  ]),
+  phone: new FormControl('', [
+    Validators.pattern('[0-9]+'),
+  ]),
+  password: new FormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+    strongPasswordValidator()]),
+  password_confirmation: new FormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+    strongPasswordValidator()])
+    }, this.checkPassMatch.bind(this))
 
   constructor(private userService : UserService,
               private toastService : ToastService,
-              private loaderService : LoaderService) { }
+              private loaderService : LoaderService,
+              private activatedRoute : ActivatedRoute,
+              private navCtrl : NavController) { 
+                this.activatedRoute.params.subscribe(
+                  (resp) => {
+                    if(resp) {
+                      this.courseId = resp['courseId'];
+                    }
+                  }
+                )
+              }
 
   ngOnInit() {
   }
 
   checkUsername() {
-    this.userService.checkUsername(this.username)
+    this.userService.checkUsername(this.fg.get('username').value)
     .subscribe(
       (resp : any) => {
         if(resp.length) {
-          this.userExist = true;
+          this.userNameExist = true;
         }
         else {
-          this.userExist = false;
-        }
-      }
-    )
+          this.userNameExist = false;
+        }  
+      })
   }
 
-  register() {
-    if(this.userExist)
-    {
-        this.toastService.presentToast('Username already taken. Try another');
-        return false;
-    }
-    if(!this.name) {
-      this.toastService.presentToast('Name is required');
-      return false;
-    }
-    if(!this.username){
-      this.toastService.presentToast('Username id required');
-      return false;
-    }
-    if(!this.password) {
-      this.toastService.presentToast('Password is required');
-    }
-    
-    this.loaderService.presentLoading();
+  checkEmail() {
+    this.userService.checkEmail(this.fg.get('email').value)
+    .subscribe(
+      (resp : any) => {
+        if(resp.length) {
+          this.emailExist = true;
+        }
+        else {
+          this.emailExist = false;
+        }  
+      })
+  }
+  
 
-    let data = {
-      'name' : this.name,
-      'username' : this.username,
-      'password' : this.password,
-      'email' : this.email,
-      'phone_no' : this.phone,
-      'user_type' : 'student'
+  checkPassMatch(g: FormGroup) {
+    if (g.get('password').value !== g.get('password_confirmation').value) {
+        g.get('password_confirmation').setErrors({ passwordMisMatch: true });
     }
-    this.userService.regiter(data)
+    return null;
+}
+
+hasError(control: string, errorName: string) {
+  return this.fg.get(control).hasError(errorName);
+}
+
+  register() {
+    if(!this.userNameExist && !this.emailExist)
+    {
+    this.loaderService.presentLoading();
+    this.userService.regiter(this.fg.value)
     .subscribe(
       (resp) => {
         this.loaderService.dismissLoading();
         this.toastService.presentToast('User created successfully');
-        this.clearFields();
+        if(!this.courseId) {
+          this.navCtrl.navigateForward('login');
+        }
+        else{
+          this.navCtrl.navigateForward('login/' + this.courseId);
+        }
       },
       (error) => {
         this.loaderService.dismissLoading();
@@ -78,13 +120,15 @@ export class RegisterPage implements OnInit {
       }
     )
   }
+}
 
-  clearFields() {
-    this.name = '';
-    this.username = '';
-    this.password = '';
-    this.email = '';
-    this.phone = '';
+  goToLogin() {
+    if(!this.courseId) {
+      this.navCtrl.navigateForward('login');
+    }
+    else {
+      this.navCtrl.navigateForward('login/' + this.courseId);
+    }
   }
 
 }

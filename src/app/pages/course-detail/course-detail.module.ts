@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CourseDetailPage } from './course-detail.page';
+import { SharedModuleModule } from '../../shared-module/shared-module.module';
+import { DescriptionTabsComponent } from '../../components/description-tabs/description-tabs.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModuleModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CourseDetailPage]
+  declarations: [CourseDetailPage, DescriptionTabsComponent],
+  entryComponents : [DescriptionTabsComponent]
 })
 export class CourseDetailPageModule {}

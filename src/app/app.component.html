@@ -5,11 +5,21 @@
         <ion-toolbar color='primary' class="alpha-header">
           <ion-title>Menu</ion-title>
         </ion-toolbar>
+        <ion-list class="sign-in-options">
+          <ion-item *ngIf = "!userLogin">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            <ion-label (click)="goToLogin()">Sign In</ion-label>
+          </ion-item>
+          <ion-item *ngIf = "userLogin">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            <ion-label (click)="logout()">Sign Out</ion-label>
+          </ion-item>
+        </ion-list>
       </ion-header>
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" [hidden] ="p.hideItem">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
@@ -19,16 +29,7 @@
         </ion-list>
       </ion-content>
       <ion-footer>
-        <ion-list lines="none">
-          <ion-item *ngIf = "!userLogin">
-            <ion-icon name="person-add" slot="start"></ion-icon>
-            <ion-label (click)="goToLogin()">Sign In</ion-label>
-          </ion-item>
-          <ion-item *ngIf = "userLogin">
-              <ion-icon name="log-out" slot="start"></ion-icon>
-              <ion-label (click)="logout()">Sign Out</ion-label>
-            </ion-item>
-        </ion-list>
+        <p class="footer-text">Alphazz 2019. All rights reserved</p>
       </ion-footer>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

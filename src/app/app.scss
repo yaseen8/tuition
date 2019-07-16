@@ -6,8 +6,9 @@
 // and used throughout the application.
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 .alpha-bg-lite{
-  background: url(src/assets/images/bg-lite.png) no-repeat top center #ffffff;
-  background-size: cover;
+  background: url(src/assets/images/banner.png) no-repeat top center;
+  display: flex;
+  flex-flow: column;
 }
 .alpha-header{
   padding-top: 0 !important;
@@ -22,4 +23,11 @@
 }
 .alpha-button{
   width:100%;
+}
+.sign-in-options{
+  margin: 0;
+}
+.footer-text{
+  padding: 10px 15px;
+  font-size: 11px;
 }

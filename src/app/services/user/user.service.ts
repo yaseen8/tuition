@@ -14,6 +14,10 @@ export class UserService {
     return this.http.get(this.apiService.getRoute('check_username', {'username' : username}));
   }
 
+  checkEmail(email) {
+    return this.http.get(this.apiService.getRoute('check_email', {'email' : email}));
+  }
+
   regiter(data) {
     return this.http.post(this.apiService.getRoute('register'), data);
   }

@@ -7,32 +7,59 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-
-  <ion-list>
-      <ion-item>
-          <ion-label position="floating">Name</ion-label>
-          <ion-input [(ngModel)]="name" ></ion-input>
-        </ion-item>
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input [(ngModel)]="username" (ngModelChange) = "checkUsername()"></ion-input>
-    </ion-item>
-    <p *ngIf = "userExist" style="color : red">Username already taken</p>
-    <ion-item>
-      <ion-label position="floating" >Password</ion-label>
-      <ion-input [(ngModel)]="password" type="password" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating" >Email</ion-label>
-        <ion-input [(ngModel)]="email" type="email" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating" >Phone No</ion-label>
-        <ion-input [(ngModel)]="phone" type="number" ></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button color="primary" expand="block" (click)="register()">Register Now</ion-button>
+<ion-content color="light">
+    <ion-card class="welcome-card">
+        <ion-list>
+            <form [formGroup]="fg">
+            <ion-item>
+              <ion-label position="floating">Name</ion-label>
+              <ion-input name="name"  formControlName="name" required ></ion-input>
+            </ion-item>
+            <p *ngIf="fg.get('name').dirty && hasError('name', 'required')" style="color : red">Name is required</p>
+            <p *ngIf="hasError('name', 'pattern')  && !hasError('name', 'required')" style="color : red">Only characters are allowed.</p>
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input name="username"  formControlName="username" required (ngModelChange) ="checkUsername()"></ion-input>
+            </ion-item>
+            <p *ngIf ="fg.get('username').dirty && hasError('username', 'required')" style="color : red">Username is required</p>
+            <p *ngIf="hasError('username', 'pattern') && !hasError('username', 'required')" style="color : red">Only characters, numbers, - and _ are allowed.</p>            
+            <p *ngIf="userNameExist" style="color : red">The username has already been taken.</p>
+            <ion-item>
+              <ion-label position="floating" >Password</ion-label>
+              <ion-input name="password" formControlName="password" type="password" required></ion-input>
+            </ion-item>
+            <p *ngIf ="fg.get('password').dirty && hasError('password', 'required')" style="color : red">Password is required</p>
+            <p *ngIf ="hasError('password', 'minlength') && !hasError('password', 'required')" style="color : red">Password must be at least 8 character long</p>            
+            <p *ngIf ="hasError('password', 'strongPassword') && !hasError('password', 'minlength') && !hasError('password', 'required')" style="color : red">Password must contain at least, 1 lower case, 1 upper case,and 1 numeric</p>            
+            <p *ngIf ="fg.get('password').dirty && hasError('password', 'passwordMisMatch') && !hasError('password', 'strongPassword') && !hasError('password', 'minlength') && !hasError('password', 'required')" style="color : red">Your password do not match</p>
+            <ion-item>
+                <ion-label position="floating" >Confirm Password</ion-label>
+                <ion-input name="password_confirmation"  formControlName="password_confirmation" type="password" required></ion-input>
+              </ion-item>
+              <p *ngIf ="fg.get('password_confirmation').dirty && hasError('password_confirmation', 'required')" style="color : red">Password is required</p>
+              <p *ngIf ="hasError('password_confirmation', 'minlength') && !hasError('password_confirmation', 'required')" style="color : red">Password must be at least 8 character long</p>            
+              <p *ngIf ="hasError('password_confirmation', 'strongPassword') && !hasError('password_confirmation', 'minlength') && !hasError('password_confirmation', 'required')" style="color : red">Password must contain at least, 1 lower case, 1 upper case,and 1 numeric</p>            
+              <p *ngIf ="fg.get('password_confirmation').dirty && hasError('password_confirmation', 'passwordMisMatch') && !hasError('password_confirmation', 'strongPassword') && !hasError('password_confirmation', 'minlength') && !hasError('password_confirmation', 'required')" style="color : red">Your password do not match</p>
+            <ion-item>
+                <ion-label position="floating" >Email</ion-label>
+                <ion-input  name="email"  formControlName="email" (ngModelChange) ="checkEmail()"></ion-input>
+            </ion-item>
+            <p *ngIf ="fg.get('email').dirty && hasError('email', 'required')" style="color : red">Email is required.</p>
+            <p *ngIf ="hasError('email', 'email')" style="color : red">Please enter a valid email.</p>
+            <p *ngIf ="emailExist" style="color : red">This email has already been taken..</p>
+            <ion-item>
+                <ion-label position="floating" >Phone No</ion-label>
+                <ion-input name="phone"  formControlName="phone" ></ion-input>
+            </ion-item>
+            <p *ngIf ="hasError('phone', 'pattern')" style="color : red">Phone only contain numbers.</p>
+            </form>
+      </ion-list>
+    </ion-card>
+    <ion-card class="welcome-card section-card">
+        <ion-button color="secondary" expand="block" (click)="register()" [disabled]="!fg.valid || userNameExist || emailExist">Register Now</ion-button>
+    </ion-card>
+    <ion-card class="welcome-card section-card">
+        <ion-button color="tertiary" expand="block" (click)="goToLogin()">Already joined? Sign In</ion-button>
+    </ion-card>
 
 </ion-content>

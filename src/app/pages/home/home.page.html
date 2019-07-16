@@ -9,49 +9,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color='light' class="alpha-bg-lite">
-    <ion-card class="welcome-card">
-      <h4>You have 0 ongoing classes</h4>
-      <h1>Start your first<br>course today!</h1>
-    </ion-card>
+<ion-content color='light'>
+    <div class="alpha-bg-lite">
+      <ion-card class="welcome-card">
+        <h4 *ngIf="loggedIn" (click)="goToBooking('in_progress')">You have {{onGoing}} ongoing classes</h4>
+        <h4 *ngIf="loggedIn" (click)="goToBooking('new')">You have {{pending}} pending classes</h4>
+        <h1>Start your first<br>course today!</h1>
+      </ion-card>
 
-    <ion-card class="welcome-card section-card">
-      <ion-grid>
-        <ion-row>
-          <ion-col class="section-head">
-            <h2>Find suitable course</h2>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-list>
-              <ion-item>
-                <ion-label>Study Level</ion-label>
-                <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
-                  <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
+      <ion-card class="welcome-card section-card">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="section-head">
+              <h2>Find suitable course</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-label>Study Level</ion-label>
+                  <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
+                    <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
 
-        <ion-row>
-          <ion-col>
-            <ion-list>
-              <ion-item>
-                <ion-label>Subject/Course</ion-label>
-                <ion-select [(ngModel)]="course">
-                  <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button color="secondary" class="alpha-button" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-label>Subject/Course</ion-label>
+                  <ion-select [(ngModel)]="course">
+                    <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="secondary" class="alpha-button" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
 </ion-content>

@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'course-filter-modal', loadChildren: './modal/course-filter-modal/course-filter-modal.module#CourseFilterModalPageModule' },
   { path: 'course-detail/:id', loadChildren: './pages/course-detail/course-detail.module#CourseDetailPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'login/:courseId', loadChildren: './pages/login/login.module#LoginPageModule' },  //when user navigate from course detail page when he is not loggedin or register
   { path: 'booking-history',
    component : BookingHistoryPage ,
   children: [
@@ -44,6 +45,7 @@ const routes: Routes = [
   ]  
 },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
+  { path: 'register/:courseId', loadChildren: './pages/register/register.module#RegisterPageModule' },  //when user navigate from course detail page when he is not loggedin or register
   { path: 'payment-history',
   component : PaymentHistoryPage,
   children: [

@@ -14,28 +14,31 @@ import { ToastService } from './services/toast/toast.service';
 })
 export class AppComponent {
   userLogin : boolean = false;
-  hideMenuItem : boolean = true;
   public appPages = [
     {
       title: 'Home',
       url: '/home',
       icon: 'home',
+      hideItem : false
     },
     {
       title: 'Course List',
       url: '/course-list',
       icon: 'list',
+      hideItem : false
 
     },
     {
       title: 'Booking History',
       url: '/booking-history',
       icon: 'timer',
+      hideItem : true
     },
     {
       title: 'Payment History',
       url: '/payment-history',
       icon: 'timer',
+      hideItem : true
     }
   ];
 
@@ -52,16 +55,18 @@ export class AppComponent {
   ) {
 
     this.initializeApp();
-    this.checkUserLogin();
     this.authService.loginStatusChange.subscribe(
       (resp) => {
         if(resp) {
           this.userLogin = true;
-          this.hideMenuItem = false;
+          this.appPages[2].hideItem = false;
+          this.appPages[3].hideItem = false;
+
         }
         else{
           this.userLogin = false;
-          this.hideMenuItem = true;
+          this.appPages[2].hideItem = true;
+          this.appPages[3].hideItem = true;
         }
       }
     )
@@ -72,20 +77,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  checkUserLogin(){
-    this.authService.checkLoggedIn()
-    .subscribe(
-      (resp) => {
-        this.userLogin = true;
-        this.hideMenuItem = false;
-      },
-      (error) => {
-        this.userLogin = false;
-        this.hideMenuItem = true;
-      }
-    )
   }
 
     goToLogin() {

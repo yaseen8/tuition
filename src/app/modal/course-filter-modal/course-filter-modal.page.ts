@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import { StudyLevelService } from '../../services/study-level/study-level.service';
 import { SubjectService } from '../../services/subjects/subject.service';
+import { LoaderService } from '../../services/loader/loader.service';
 
 @Component({
   selector: 'app-course-filter-modal',
@@ -17,7 +18,8 @@ export class CourseFilterModalPage implements OnInit {
 
   constructor(private modalCtrl : ModalController,
               private studyLevelService : StudyLevelService,
-              private subjectService : SubjectService) { 
+              private subjectService : SubjectService,
+              private loaderService : LoaderService) { 
               }
 
   ngOnInit() {
@@ -35,10 +37,15 @@ export class CourseFilterModalPage implements OnInit {
   }
 
     getSubjects(id) {
+      this.loaderService.presentLoading();
         this.subjectService.getSubjectsList(id)
             .subscribe(
                 (resp : any) => {
                     this.subjectList = resp;
+                    this.loaderService.dismissLoading();
+                },
+                (error) => {
+                  this.loaderService.dismissLoading();
                 }
             )
     }
