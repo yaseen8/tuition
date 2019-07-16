@@ -79,10 +79,12 @@ export class CourseListPage implements OnInit {
     }
 
     getCoursesList() {
+      this.loaderService.presentLoading();
       this.coursesService.getCourses(this.status, this.courseId, this.startDate)
       .subscribe(
         (resp) => {
           this.courseList = resp;
+          this.loaderService.dismissLoading();
           if(this.courseList.length) {
             this.showData = true;
           }
@@ -91,7 +93,7 @@ export class CourseListPage implements OnInit {
           }
         },
         (error) => {
-          
+          this.loaderService.dismissLoading();
         }
       )
     }

@@ -20,6 +20,8 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
 import { PaymentHistoryPage } from './pages/payment-history/payment-history.page';
 import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
 import { BookingStatusComponent } from './components/booking-status/booking-status.component';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
 @NgModule({
   declarations: [AppComponent, CourseFilterModalPage, BookingHistoryPage, PaymentHistoryPage, PaymentStatusComponent, BookingStatusComponent],
@@ -36,6 +38,8 @@ import { BookingStatusComponent } from './components/booking-status/booking-stat
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    FileTransfer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: HttpAdditionalHeaderInterceptor, multi: true },

@@ -33,8 +33,8 @@ export class BookingStatusComponent implements OnInit {
    this.bookCourseService.getUserBooking(this.status)
     .subscribe(
       (resp : any) => {
-        this.loaderService.dismissLoading();
         this.userBooking = resp;
+        this.loaderService.dismissLoading();
         if(this.userBooking.length) {
           this.showData = true;
         }

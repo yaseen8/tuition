@@ -4,7 +4,7 @@
   <ion-card *ngFor = "let payment of userPayments">
       <ion-item>
         <ion-card-title >{{payment.book_course.new_course.title}}</ion-card-title>
-        <ion-button slot="end" *ngIf="status === 'pending'">Upload Image</ion-button>
+        <ion-button slot="end" *ngIf="status === 'pending'" (click) ="presentActionSheet(payment.id)">Upload Image</ion-button>
       </ion-item>
       <ion-item>
         <ion-chip *ngFor = "let day of payment.book_course.new_course.schedule">

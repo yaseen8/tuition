@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { HttpClient } from '@angular/common/http';
+// import { File } from '@ionic-native/file';
 
 @Injectable({
   providedIn: 'root'
