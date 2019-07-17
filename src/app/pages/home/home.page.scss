@@ -1,5 +1,6 @@
 .welcome-card{
   margin-top: 20px;
+  margin-bottom: 0;
   background: url(src/assets/images/edu-icon.png) no-repeat bottom right #ffffff;
   background-size: contain;
   box-shadow: none;
@@ -7,11 +8,27 @@
     background: #fff;
     background-image: none;
   }
+  &.attention-card{
+    background: linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+    h4{
+      margin: 15px;
+      font-weight: 800;
+      color:#fff;
+    }
+  }
+  &.goodnews-card{
+    background: linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+    h4{
+      margin: 15px;
+      font-weight: 800;
+      color:#fff;
+    }
+  }
   h1{
     font-family: 'Raleway', sans-serif;
     margin: 40px 0 50px 20px;
     font-size: 25px;
-    color: #eb615f;
+    color: #da3b00;
   }
   h4{
     font-family: 'Raleway', sans-serif;

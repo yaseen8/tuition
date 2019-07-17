@@ -136,5 +136,8 @@ export class CourseDetailPage implements OnInit {
     this.navCtrl.navigateForward('register/' + courseId);
   }
   }
+  show(id){
+    document.getElementById(id).style.display = "block";
+  }
 
 }

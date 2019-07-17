@@ -5,6 +5,9 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+html, body, h1, h2, h3, h4, h5, p, span{
+  font-family: 'Raleway', sans-serif;
+}
 .alpha-bg-lite{
   background: url(src/assets/images/banner.png) no-repeat top center;
   display: flex;
@@ -26,6 +29,7 @@
 }
 .sign-in-options{
   margin: 0;
+  padding: 0;
 }
 .footer-text{
   padding: 10px 15px;

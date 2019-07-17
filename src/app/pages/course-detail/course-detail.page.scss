@@ -9,9 +9,9 @@
   }
   h1{
     font-family: 'Raleway', sans-serif;
-    margin: 40px 0 50px 20px;
+    margin: 15px 0;
     font-size: 20px;
-    color: #eb615f;
+    color: #da3b00;
   }
   h4{
     font-family: 'Raleway', sans-serif;
@@ -26,5 +26,30 @@
   .time{
     font-size: 13px;
     color: #0ec254;
+  }
+  .description{
+    padding: 15px;
+    .tabs{
+      .tab{
+        padding: 15px;
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+        color: #666;
+        border-bottom: #fff solid 2px;
+        text-decoration: none;
+        &.active{
+          border-bottom: #da3b00 solid 2px;
+          color: #da3b00;
+        }
+      }
+    }
+    .description-text{
+      display: none;
+      font-size: 13px;
+      margin-top: 30px;
+      &.show{
+        display: block;
+      }
+    }
   }
 }

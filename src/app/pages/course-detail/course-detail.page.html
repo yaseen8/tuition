@@ -17,16 +17,16 @@
       </ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="author">{{courseDetail.teacher.name}}</ion-label>
+      <ion-label class="author"><strong>Teacher:</strong> {{courseDetail.teacher.name}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="fee">{{courseDetail.course_fee.fee}} PKR</ion-label>
+      <ion-label class="fee"><strong>Fee (Monthly):</strong> {{courseDetail.course_fee.fee}} PKR</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="date">Starting: {{courseDetail.start_date | date: mediumDate}}</ion-label>
+      <ion-label class="date"><strong>Starting:</strong> {{courseDetail.start_date | date: mediumDate}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="date">Ending: {{courseDetail.end_date | date: mediumDate}}</ion-label>
+      <ion-label class="date"><strong>Ending:</strong> {{courseDetail.end_date | date: mediumDate}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-chip *ngFor = "let day of courseDetail.schedule">
@@ -34,9 +34,27 @@
       </ion-chip>
     </ion-item>
     <ion-item>
-      <ion-label class="time">{{courseDetail.schedule[0].start_time}} to {{courseDetail.schedule[0].end_time}}</ion-label>
-      <a slot="end" *ngIf="checkAlreadyBookedOrDate(courseDetail.start_date)" (click)= "bookCourse(courseDetail.id)">Book Now</a>
+      <ion-label class="time"><strong>Timings:</strong> {{courseDetail.schedule[0].start_time}} to {{courseDetail.schedule[0].end_time}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button *ngIf="!checkAlreadyBookedOrDate(courseDetail.start_date)" slot='end' color="secondary" expand="block" (click)= "bookCourse(courseDetail.id)">Register Now</ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card class="welcome-card section-card">
+    <div class="description">
+      <div class="tabs">
+        <a class="tab active" (click) = "show('block-1')">Course Details</a>
+        <a class="tab" (click) = "show('block-2')">Teacher</a>
+      </div>
+      <div id="block-1" class="description-text show">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+      <div id="block-2" class="description-text">
+        Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+    </div>
+    <ion-item>
+      <ion-button *ngIf="!checkAlreadyBookedOrDate(courseDetail.start_date)" slot='end' color="secondary" expand="block" (click)= "bookCourse(courseDetail.id)">Register Now</ion-button>
     </ion-item>
   </ion-card>
 </ion-content>
-

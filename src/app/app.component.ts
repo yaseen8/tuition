@@ -22,14 +22,14 @@ export class AppComponent {
       hideItem : false
     },
     {
-      title: 'Course List',
+      title: 'Browse Courses',
       url: '/course-list',
       icon: 'list',
       hideItem : false
 
     },
     {
-      title: 'Booking History',
+      title: 'My Courses',
       url: '/booking-history',
       icon: 'timer',
       hideItem : true
@@ -37,7 +37,7 @@ export class AppComponent {
     {
       title: 'Payment History',
       url: '/payment-history',
-      icon: 'timer',
+      icon: 'cash',
       hideItem : true
     }
   ];
