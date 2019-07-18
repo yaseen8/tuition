@@ -15,7 +15,7 @@
         <h4>You have registered for <ion-badge color="warning">{{pending}}</ion-badge> course(s), but have not confirmed payment. Click to confirm.</h4>
       </ion-card>
 
-      <ion-card *ngIf="loggedIn" (click)="goToBooking('in_progress')" class="welcome-card goodnews-card">
+      <ion-card *ngIf="onGoing" (click)="goToBooking('in_progress')" class="welcome-card goodnews-card">
         <h4>You have {{onGoing}} classes in-progress. Click to view</h4>
       </ion-card>
 
