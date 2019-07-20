@@ -11,10 +11,16 @@
 
 <ion-content color='light'>
     <div class="alpha-bg-lite">
+      <ion-card *ngIf="pending" (click)="goToBooking('new')" class="welcome-card attention-card">
+        <h4>You have registered for <ion-badge color="warning">{{pending}}</ion-badge> course(s), but have not confirmed payment. Click to confirm.</h4>
+      </ion-card>
+
+      <ion-card *ngIf="onGoing" (click)="goToBooking('in_progress')" class="welcome-card goodnews-card">
+        <h4>You have {{onGoing}} classes in-progress. Click to view</h4>
+      </ion-card>
+
       <ion-card class="welcome-card">
-        <h4 *ngIf="loggedIn" (click)="goToBooking('in_progress')">You have {{onGoing}} ongoing classes</h4>
-        <h4 *ngIf="loggedIn" (click)="goToBooking('new')">You have {{pending}} pending classes</h4>
-        <h1>Start your first<br>course today!</h1>
+        <h1>Be Ahead,<br>Start your favourite<br>course today!</h1>
       </ion-card>
 
       <ion-card class="welcome-card section-card">

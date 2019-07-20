@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CourseDetailPage } from './course-detail.page';
 import { SharedModuleModule } from '../../shared-module/shared-module.module';
-import { DescriptionTabsComponent } from '../../components/description-tabs/description-tabs.component';
+//import { DescriptionTabsComponent } from '../../components/description-tabs/description-tabs.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
     SharedModuleModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CourseDetailPage, DescriptionTabsComponent],
-  entryComponents : [DescriptionTabsComponent]
+  declarations: [CourseDetailPage],
+  entryComponents : []
 })
 export class CourseDetailPageModule {}
