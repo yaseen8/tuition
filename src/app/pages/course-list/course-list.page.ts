@@ -42,22 +42,8 @@ export class CourseListPage implements OnInit {
                }
 
   ngOnInit() {
-    this.checkLogin();
     this.getCoursesList();
     
-  }
-
-  checkLogin() {
-    this.authService.checkLoggedIn()
-    .subscribe(
-      (resp) => {
-        console.log(resp);
-        this.userLoggedIn = true;
-      },
-      (error) => {
-        this.userLoggedIn = false;
-      }
-    )
   }
 
     async presentModal() {

@@ -46,7 +46,6 @@ export class CourseDetailPage implements OnInit {
       (resp) => {
         this.courseDetail = resp;
         this.showData = true;
-        console.log(this.courseDetail);
       }
     )
   }
@@ -55,7 +54,6 @@ export class CourseDetailPage implements OnInit {
     this.authService.checkLoggedIn()
     .subscribe(
       (resp) => {
-        console.log(resp);
         this.userLoggedIn = true;
       },
       (error) => {

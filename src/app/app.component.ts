@@ -7,6 +7,7 @@ import { TokenService } from './services/auth/token.service';
 import { AuthService } from './services/auth/auth.service';
 import { Storage } from '@ionic/storage';
 import { ToastService } from './services/toast/toast.service';
+import { LoaderService } from './services/loader/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -51,7 +52,8 @@ export class AppComponent {
     private tokenService : TokenService,
     private authService : AuthService,
     private storage : Storage,
-    private toastService : ToastService
+    private toastService : ToastService,
+    private loaderService : LoaderService
   ) {
 
     this.initializeApp();
@@ -85,13 +87,18 @@ export class AppComponent {
     }
 
     logout() {
+      this.loaderService.presentLoading();
       this.authService.logout()
       .subscribe(
         (resp) => {
           this.authService.clearAuthorized();
+          this.loaderService.dismissLoading();
+          this.toastService.presentToast('Logout Successfull');
           this.menuCtrl.close();
           this.navCtrl.navigateForward('home');
-          this.toastService.presentToast('Logout Successfull');
+        },
+        (error) => {
+          this.loaderService.dismissLoading();
         }
       )
     }
