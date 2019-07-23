@@ -11,7 +11,7 @@
 
 <ion-content color='light'>
     <div class="alpha-bg-lite">
-      <ion-card *ngIf="pending" (click)="goToBooking('new')" class="welcome-card attention-card">
+      <ion-card *ngIf="pending" (click)="goToPayment()" class="welcome-card attention-card">
         <h4>You have registered for <ion-badge color="warning">{{pending}}</ion-badge> course(s), but have not confirmed payment. Click to confirm.</h4>
       </ion-card>
 

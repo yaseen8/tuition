@@ -120,4 +120,8 @@ export class HomePage {
     getCourseList() {
         this.navCtrl.navigateForward('course-list/' + this.course)
     }
+
+    goToPayment() {
+      this.navCtrl.navigateForward('/payment-history/pending');
+    }
 }
