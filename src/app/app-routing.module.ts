@@ -69,6 +69,9 @@ const routes: Routes = [
     }
   ] 
  },
+  { path: 'booking-confirmation/:course-id', loadChildren: './pages/booking-confirmation/booking-confirmation.module#BookingConfirmationPageModule' },
+
+
 
 
 

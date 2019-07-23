@@ -17,6 +17,7 @@ export class CourseListPage implements OnInit {
 
   courseList : any = [];
   status : string;
+  studyLevelId : number;
   courseId : number;
   startDate : string;
   showData : boolean = true;
@@ -52,7 +53,8 @@ export class CourseListPage implements OnInit {
         });
         modal.onDidDismiss().then(
           (resp) => {
-            if(resp['data']['course_id'] || resp['data']['start_date']){
+            if(resp['data']['study_level'] || resp['data']['course_id'] || resp['data']['start_date']){
+              this.studyLevelId = resp['data']['study_level'];
               this.courseId = resp['data']['course_id'];
               this.startDate = resp['data']['start_date'];
             }
@@ -66,7 +68,7 @@ export class CourseListPage implements OnInit {
 
     getCoursesList() {
       this.loaderService.presentLoading();
-      this.coursesService.getCourses(this.status, this.courseId, this.startDate)
+      this.coursesService.getCourses(this.status,this.studyLevelId, this.courseId, this.startDate)
       .subscribe(
         (resp) => {
           this.courseList = resp;
