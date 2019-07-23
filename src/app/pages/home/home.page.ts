@@ -18,6 +18,8 @@ export class HomePage {
   onGoing : number;
   pending: number;
   loggedIn : boolean = false;
+  study_level : number;
+
 
   constructor(private studyLevelService : StudyLevelService,
               private subjectService : SubjectService,
@@ -27,6 +29,7 @@ export class HomePage {
               private loaderService : LoaderService) {
                   this.onGoing = 0;
                   this.pending = 0;
+                  this.course = 0;
             this.authService.loginStatusChange.subscribe(
                 (resp) => {
                     if(resp) {
@@ -62,6 +65,7 @@ export class HomePage {
   }
 
     getSubjects(id) {
+      this.study_level = id;
       this.loaderService.presentLoading();
         this.subjectService.getSubjectsList(id)
             .subscribe(

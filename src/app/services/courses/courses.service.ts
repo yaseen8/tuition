@@ -10,8 +10,8 @@ export class CoursesService {
   constructor(private apiService : ApiService,
               private http : HttpClient) { }
 
-  getCourses(status, courseId, startDate) {
-  return this.http.get(this.apiService.getRoute('course_list', {'status' : status, 'course_id' : courseId, 'start_date' : startDate}));
+  getCourses(status,studyLevelId, courseId, startDate) {
+  return this.http.get(this.apiService.getRoute('course_list', {'status' : status,'study_level' : studyLevelId, 'course_id' : courseId, 'start_date' : startDate}));
   }
 
   getCourseDetail(id) {

@@ -1,7 +1,7 @@
 <ion-content color="light">
   <ng-container *ngIf = "showData">
   <ion-card *ngFor = "let book of userBooking" class="welcome-card section-card">
-      <ion-item>
+      <ion-item (click) = "courseDetail(book.new_course.id)">
         <ion-card-title>{{book.new_course.title}}</ion-card-title>
       </ion-item>
       <ion-item>

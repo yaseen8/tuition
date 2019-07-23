@@ -15,6 +15,7 @@ export class CourseFilterModalPage implements OnInit {
   subjectList = [];
   course : number;
   startDate : string;
+  studyLevel : number;
 
   constructor(private modalCtrl : ModalController,
               private studyLevelService : StudyLevelService,
@@ -37,6 +38,7 @@ export class CourseFilterModalPage implements OnInit {
   }
 
     getSubjects(id) {
+      this.studyLevel = id;
       this.loaderService.presentLoading();
         this.subjectService.getSubjectsList(id)
             .subscribe(
@@ -57,6 +59,7 @@ export class CourseFilterModalPage implements OnInit {
       }
         this.modalCtrl.dismiss(
           {
+            'study_level' : this.studyLevel,
             'course_id' : this.course,
             'start_date' : date
           }

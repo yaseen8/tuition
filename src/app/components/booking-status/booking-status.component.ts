@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookCourseService } from '../../services/book-course/book-course.service';
 import { LoaderService } from '../../services/loader/loader.service';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-booking-status',
@@ -15,7 +16,8 @@ export class BookingStatusComponent implements OnInit {
 
   constructor(private activatedRoute : ActivatedRoute,
               private bookCourseService : BookCourseService,
-              private loaderService : LoaderService) {
+              private loaderService : LoaderService,
+              private navCtrl : NavController) {
                 this.activatedRoute.url.subscribe(
                   (resp) =>{
                     this.status = resp[0]['path'];
@@ -46,6 +48,10 @@ export class BookingStatusComponent implements OnInit {
         this.loaderService.dismissLoading();
       }
     )
+  }
+
+  courseDetail(id) {
+    this.navCtrl.navigateForward('course-detail/' + id);
   }
 
 }

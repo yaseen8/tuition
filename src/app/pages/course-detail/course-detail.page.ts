@@ -111,23 +111,7 @@ export class CourseDetailPage implements OnInit {
   bookCourse(courseId) {
     if(this.userLoggedIn) 
     {
-    this.loaderService.presentLoading();
-    let data = {
-      'fk_new_course_id' : courseId,
-      'status' : 'pending'
-    }
-    this.bookCourseSevice.bookCourse(data)
-    .subscribe(
-      (resp) => {
-        this.loaderService.dismissLoading();
-        this.toastService.presentToast('Successfully Booked, Please upload payment image');
-        this.navCtrl.navigateForward('booking-history/new')
-      },
-      (error) => {
-        this.loaderService.dismissLoading();
-        this.toastService.presentToast('Something went wrong, please try later');
-      }
-    )
+      this.navCtrl.navigateForward('booking-confirmation/' + courseId);
   }
   else {
     this.toastService.presentToast('Please Login to book course');
