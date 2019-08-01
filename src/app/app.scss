@@ -5,8 +5,9 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 html, body, h1, h2, h3, h4, h5, p, span{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .alpha-bg-lite{
   background: url(src/assets/images/banner.png) no-repeat top center;
@@ -18,7 +19,7 @@ html, body, h1, h2, h3, h4, h5, p, span{
 }
 .section-head{
   h2{
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 30px 0 0 15px;
     font-size: 25px;
     color: #333;
@@ -34,4 +35,8 @@ html, body, h1, h2, h3, h4, h5, p, span{
 .footer-text{
   padding: 10px 15px;
   font-size: 11px;
+}
+.transparent{
+  background: transparent;
+  box-shadow: none;
 }

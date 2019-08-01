@@ -1,38 +1,37 @@
 .welcome-card{
   margin-top: 20px;
   margin-bottom: 0;
-  background: url(src/assets/images/edu-icon.png) no-repeat bottom right #ffffff;
   background-size: contain;
   box-shadow: none;
   &.section-card{
-    background: #fff;
+    background: #ffffff;
     background-image: none;
+    border-radius:0;
   }
   &.attention-card{
-    background: linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+    //background: linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
     h4{
-      margin: 15px;
-      font-weight: 800;
+      margin: 5px 5px;
       color:#fff;
     }
   }
   &.goodnews-card{
-    background: linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+    //background: linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
     h4{
-      margin: 15px;
-      font-weight: 800;
+      margin: 5px 5px;
       color:#fff;
     }
   }
   h1{
-    font-family: 'Raleway', sans-serif;
-    margin: 40px 0 50px 20px;
-    font-size: 25px;
-    color: #da3b00;
+    font-family: 'Roboto', sans-serif;
+    margin: 15px 0 15px 5px;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 100;
   }
   h4{
-    font-family: 'Raleway', sans-serif;
-    margin: 30px 0 0 20px;
+    font-family: 'Roboto', sans-serif;
+    margin: 30px 0 0 5px;
     font-size: 13px;
     color: #666;
   }

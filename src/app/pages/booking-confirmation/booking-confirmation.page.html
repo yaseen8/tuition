@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary" class="alpha-header">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Confirmation
     </ion-title>
@@ -8,12 +11,27 @@
 
 <ion-content>
 
-  <h4>This content goes there</h4>
+    <ng-container>
+        <ion-card class="welcome-card section-card">
+          <ion-card-content>
+            <h1><strong>Payment Instructions</strong></h1>
+            You can pay via direct bank transfer or Easypaisa. You will need to upload picture of receipt after payment. 
+            TO do so simply go to payments section
+            <h1><strong>Bank Transfer</strong></h1>
+            Bank: Meezan Bank limited<br>
+            Branch: Saddar Rawalpindi (1234)<br>
+            Acc Number: 23212-12312310
+          </ion-card-content>      
+        </ion-card>
+    </ng-container>
 
-  <ion-footer>
-      <ion-button  color="secondary" expand="block" (click)= "bookCourse()">Confirm</ion-button>
-  </ion-footer>
-  
+    <ng-container>
+        <ion-card class="transparent">
+          <ion-card-content>
+            <ion-button  color="secondary" expand="block" (click)= "bookCourse()">Confirm</ion-button>
+          </ion-card-content>
+        </ion-card>
+    </ng-container>
   
 
 </ion-content>

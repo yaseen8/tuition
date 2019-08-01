@@ -16,11 +16,11 @@
       </ion-card>
 
       <ion-card *ngIf="onGoing" (click)="goToBooking('in_progress')" class="welcome-card goodnews-card">
-        <h4>You have {{onGoing}} classes in-progress. Click to view</h4>
+        <h4>You have <ion-badge color="seccess">{{onGoing}}</ion-badge> course(s) in-progress. Click to view</h4>
       </ion-card>
 
       <ion-card class="welcome-card">
-        <h1>Be Ahead,<br>Start your favourite<br>course today!</h1>
+        <h1>Welcome,<br>Start your favourite<br>course today!</h1>
       </ion-card>
 
       <ion-card class="welcome-card section-card">
