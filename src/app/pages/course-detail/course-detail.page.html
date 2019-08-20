@@ -46,7 +46,7 @@
         <a class="tab active">Course Details</a>
       </div>
       <div class="description-text show">
-        {{courseDetail.description}}
+        {{courseDescription}}
       </div>
     </div>
   </ion-card>
@@ -56,11 +56,18 @@
           <a class="tab active">About Teacher</a>
         </div>
         <div class="description-text">
-          {{courseDetail.teacher_detail.description}}
+          {{teacherDescription}}
         </div>
       </div>
     </ion-card>
   <ion-card>
       <ion-button *ngIf="checkAlreadyBookedOrDate(courseDetail.start_date)" slot='end' color="secondary" expand="block" (click)= "bookCourse(courseDetail.id)">Register Now</ion-button>
   </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <a href="whatsapp://send?phone=+923121527725">
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+    </a>
+    </ion-fab>
 </ion-content>

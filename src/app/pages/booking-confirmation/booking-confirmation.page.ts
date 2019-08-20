@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookingConfirmationPage implements OnInit {
   courseId : number;
+  content  : string;
 
   constructor(private loaderService : LoaderService,
               private bookCourseSevice: BookCourseService,
@@ -28,6 +29,22 @@ export class BookingConfirmationPage implements OnInit {
                }
 
   ngOnInit() {
+    this.paymentContent();
+  }
+
+  paymentContent(){
+    this.loaderService.presentLoading();
+    this.bookCourseSevice.getPaymentContent()
+    .subscribe(
+      (resp) =>{
+        this.content = resp['content'];
+        this.loaderService.dismissLoading();
+       
+      },
+      (error) => {
+        this.loaderService.dismissLoading();
+      }
+    )
   }
 
   bookCourse() {
@@ -41,7 +58,7 @@ export class BookingConfirmationPage implements OnInit {
       (resp) => {
         this.loaderService.dismissLoading();
         this.toastService.presentToast('Successfully Booked, Please upload payment image');
-        this.navCtrl.navigateForward('booking-history/new')
+        this.navCtrl.navigateForward('payment-history/pending')
       },
       (error) => {
         this.loaderService.dismissLoading();

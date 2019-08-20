@@ -13,10 +13,12 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./course-detail.page.scss'],
 })
 export class CourseDetailPage implements OnInit {
-  courseDetail = {};
+  courseDetail : any;
   showData : boolean = false;
   userLoggedIn : boolean = false;
   alreadyBookedCourse : boolean = false;
+  courseDescription : string;
+  teacherDescription : string;
 
   constructor(private activatedRoute : ActivatedRoute,
               private courseService : CoursesService,
@@ -41,11 +43,18 @@ export class CourseDetailPage implements OnInit {
   
 
   getCourseDetail(id) {
+    this.loaderService.presentLoading();
     this.courseService.getCourseDetail(id)
     .subscribe(
       (resp) => {
         this.courseDetail = resp;
+        this.courseDescription = resp['description'];
+        this.teacherDescription = resp['teacher_detail']['description'];
         this.showData = true;
+        this.loaderService.dismissLoading();
+      },
+      (error) => {
+        this.loaderService.dismissLoading();
       }
     )
   }

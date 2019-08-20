@@ -26,4 +26,8 @@ export class BookCourseService {
   checkUserBookedCourse(id) {
     return this.http.get(this.apiService.getRoute('check_already_booked_course', {'id' : id}));
   }
+
+  getPaymentContent(){
+    return this.http.get(this.apiService.getRoute('payment_content'));
+  }
 }

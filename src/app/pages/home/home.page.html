@@ -35,7 +35,7 @@
               <ion-list>
                 <ion-item>
                   <ion-label>Study Level</ion-label>
-                  <ion-select [(ngModel)]="studyLevel" (ngModelChange) = "getSubjects(studyLevel)">
+                  <ion-select [(ngModel)]="study_level" (ngModelChange) = "getSubjects(study_level)">
                     <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
                   </ion-select>
                 </ion-item>
@@ -63,4 +63,11 @@
         </ion-grid>
       </ion-card>
     </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <a href="whatsapp://send?phone=+923121527725">
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+    </a>
+    </ion-fab>
 </ion-content>
