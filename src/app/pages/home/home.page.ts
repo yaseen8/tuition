@@ -118,7 +118,7 @@ export class HomePage {
        }
        
     getCourseList() {
-        this.navCtrl.navigateForward('course-list/' + this.course)
+        this.navCtrl.navigateForward('course-list')
     }
 
     goToPayment() {

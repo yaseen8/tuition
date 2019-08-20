@@ -11,7 +11,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Study Level</ion-label>
-          <ion-select [(ngModel)]="studyLevel"  (ngModelChange) = "getSubjects(studyLevel)">
+          <ion-select interface="popover" [(ngModel)]="studyLevel"  (ngModelChange) = "getSubjects(studyLevel)">
             <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
           </ion-select>
         </ion-item>
@@ -22,7 +22,7 @@
 
         <ion-item>
           <ion-label>Subject/Course</ion-label>
-          <ion-select [(ngModel)] = "course">
+          <ion-select [(ngModel)] = "course" interface="popover">
             <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
           </ion-select>
         </ion-item>

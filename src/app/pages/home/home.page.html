@@ -20,47 +20,11 @@
       </ion-card>
 
       <ion-card class="welcome-card">
-        <h1>Welcome,<br>Start your favourite<br>course today!</h1>
+        <h1>Welcome,<br>Find & Start your favourite<br>Course or Class today!</h1>
       </ion-card>
 
-      <ion-card class="welcome-card section-card">
-        <ion-grid>
-          <ion-row>
-            <ion-col class="section-head">
-              <h2>Find suitable course</h2>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-list>
-                <ion-item>
-                  <ion-label>Study Level</ion-label>
-                  <ion-select [(ngModel)]="study_level" (ngModelChange) = "getSubjects(study_level)">
-                    <ion-select-option *ngFor="let level of studyLevelList" [value]="level.id" >{{level.title}}</ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-
-          <ion-row>
-            <ion-col>
-              <ion-list>
-                <ion-item>
-                  <ion-label>Subject/Course</ion-label>
-                  <ion-select [(ngModel)]="course">
-                    <ion-select-option *ngFor="let subject of subjectList" [value]="subject.id" >{{subject.title}}</ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-button color="secondary" class="alpha-button" (click) = "getCourseList()" [disabled] = "!course">Search</ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+      <ion-card class="welcome-card button-card">
+          <ion-button color='light' (click) = "getCourseList()">Explore available classes >></ion-button>
       </ion-card>
     </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

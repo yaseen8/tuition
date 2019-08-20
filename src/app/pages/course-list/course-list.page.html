@@ -10,8 +10,9 @@
 </ion-header>
 
 <ion-content color='light'>
+    <div class="alpha-bg-lite">
   <ion-card class="transparent">
-    <ion-button color="secondary" expand="block" (click)="presentModal()">Search Courses</ion-button>
+    <ion-button color="primary" expand="block" (click)="presentModal()">Search Courses</ion-button>
   </ion-card>
   <ng-container *ngIf="showData">
   <ion-card *ngFor = "let sub of courseList" class="welcome-card section-card">
@@ -55,4 +56,5 @@
     </ion-fab-button>
   </a>
   </ion-fab>
+  </div>
 </ion-content>

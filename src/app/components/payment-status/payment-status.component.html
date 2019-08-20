@@ -8,9 +8,9 @@
             <ion-label class="author">{{payment.book_course.new_course.title}}</ion-label>
         </ion-item>
       <ion-item>
-          <ion-label class="date">Registered on {{payment.timestamp | date : 'medium' }}</ion-label>
+          <ion-label class="date">Registered on {{payment.book_course.timestamp | date : 'medium' }}</ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="status === 'approved'">
             <ion-label class="date">Paid on {{payment.timestamp | date : 'medium' }}</ion-label>
         </ion-item>
       <ion-card-content>

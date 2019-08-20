@@ -13,6 +13,8 @@ html, body, h1, h2, h3, h4, h5, p, span{
   background: url(src/assets/images/banner.png) no-repeat top center;
   display: flex;
   flex-flow: column;
+  min-height: 100%;
+  padding-bottom: 50px;
 }
 .alpha-header{
   padding-top: 0 !important;
@@ -27,6 +29,8 @@ html, body, h1, h2, h3, h4, h5, p, span{
 }
 .alpha-button{
   width:100%;
+  box-shadow: none !important;
+  border-radius:0 !important;
 }
 .sign-in-options{
   margin: 0;
@@ -38,5 +42,9 @@ html, body, h1, h2, h3, h4, h5, p, span{
 }
 .transparent{
   background: transparent;
+  box-shadow: none;
+}
+.purple{
+  background: #654e98;
   box-shadow: none;
 }
