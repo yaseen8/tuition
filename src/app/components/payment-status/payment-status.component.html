@@ -14,7 +14,7 @@
             <ion-label class="date">Paid on {{payment.timestamp | date : 'medium' }}</ion-label>
         </ion-item>
       <ion-card-content>
-          <ion-button *ngIf="status === 'pending'" (click) ="presentActionSheet(payment.id)">Upload Receipt</ion-button>
+          <ion-button *ngIf="status === 'pending' && !payment.image" (click) ="presentActionSheet(payment.id)">Upload Receipt</ion-button>
       </ion-card-content>
     </ion-card>
   </ng-container>
@@ -26,10 +26,10 @@
         </ion-card>
     </ng-container>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <a href="whatsapp://send?phone=+923121527725">
-            <ion-fab-button>
-              <ion-icon name="settings"></ion-icon>
-            </ion-fab-button>
-          </a>
-          </ion-fab>
+        <a href="whatsapp://send?phone=+923180574554">
+        <ion-fab-button>
+          <ion-icon name="chatbubbles"></ion-icon>
+        </ion-fab-button>
+      </a>
+      </ion-fab>
 </ion-content>

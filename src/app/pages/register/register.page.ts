@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
   fg = new FormGroup({
     name : new FormControl('', [
       Validators.required,
-      Validators.pattern('[a-zA-Z]+')
+      Validators.pattern('[a-z A-Z]+')
     ]),
     username: new FormControl('', [
       Validators.required,
