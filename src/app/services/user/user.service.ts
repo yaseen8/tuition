@@ -19,6 +19,6 @@ export class UserService {
   }
 
   regiter(data) {
-    return this.http.post(this.apiService.getRoute('register'), data);
+    return this.http.post(this.apiService.getRoute('create'), data);
   }
 }
