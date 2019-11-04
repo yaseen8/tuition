@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { FCM } from '@ionic-native/fcm/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -44,6 +44,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
       { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: HttpAdditionalHeaderInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+      FCM
   ],
   bootstrap: [AppComponent]
 })

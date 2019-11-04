@@ -70,6 +70,9 @@ const routes: Routes = [
   ] 
  },
   { path: 'booking-confirmation/:course-id', loadChildren: './pages/booking-confirmation/booking-confirmation.module#BookingConfirmationPageModule' },
+  { path: 'chat/:userId', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'chat-list', loadChildren: './pages/chat/chat-list/chat-list.module#ChatListPageModule' },
+
 
 
 

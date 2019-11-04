@@ -2,7 +2,7 @@
   <ng-container *ngIf= "showData">
   <ion-card *ngFor = "let payment of userPayments" class="welcome-card section-card">
       <ion-item>
-        <ion-card-title >PKR 4000</ion-card-title>
+        <ion-card-title >PKR {{payment.book_course.new_course.course_fee.fee}}</ion-card-title>
       </ion-item>
       <ion-item>
             <ion-label class="author">{{payment.book_course.new_course.title}}</ion-label>
@@ -13,8 +13,9 @@
       <ion-item *ngIf="status === 'approved'">
             <ion-label class="date">Paid on {{payment.timestamp | date : 'medium' }}</ion-label>
         </ion-item>
-      <ion-card-content>
-          <ion-button *ngIf="status === 'pending' && !payment.image" (click) ="presentActionSheet(payment.id)">Upload Receipt</ion-button>
+      <ion-card-content *ngIf="status === 'pending' && !payment.image">
+          <ion-button  (click) ="presentActionSheet(payment.id)">Upload Receipt</ion-button>
+          <p>Contact support if you face difficulty in uploading. Click chat icon at bottom right corner of app</p>
       </ion-card-content>
     </ion-card>
   </ng-container>

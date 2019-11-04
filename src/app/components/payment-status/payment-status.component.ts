@@ -113,13 +113,15 @@ export class PaymentStatusComponent implements OnInit {
         }
      }
    
-     this.fileTransfer.upload(imageData, this.apiService.getRoute('upload_payment_image'), options)
+     this.fileTransfer.upload(imageData, 'http://www.alphazzz.com/tuition/public/api/upload_payment_image', options)
       .then((data) => {
         this.loaderService.dismissLoading();
         this.toastService.presentToast('Image Successfully uploaded');
+        this.getUserPayments();
       }, (err) => {
           this.loaderService.dismissLoading();
-          this.toastService.presentToast('Something went wrong, try again');
+          // alert(JSON.stringify(err));
+          this.toastService.presentToast('Contact support if you face difficulty in uploading. Click chat icon at bottom right corner of app');
       })
     
     }, (err) => {
