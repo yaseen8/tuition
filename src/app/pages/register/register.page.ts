@@ -30,7 +30,7 @@ export class RegisterPage implements OnInit {
       Validators.required,
       Validators.email
   ]),
-  phone: new FormControl('', [
+  phone_no: new FormControl('', [
     Validators.pattern('[0-9]+'),
   ]),
   password: new FormControl('', [

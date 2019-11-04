@@ -22,6 +22,8 @@ export class CourseListPage implements OnInit {
   startDate : string;
   showData : boolean = true;
   userLoggedIn : boolean = false;
+  userData: any = {};
+  userType: string;
 
   constructor(private modalController : ModalController,
               private navCtrl : NavController,
@@ -36,9 +38,18 @@ export class CourseListPage implements OnInit {
                 (resp) => {
                   if(resp) {
                     this.courseId = resp['id'];
+                      this.authService.checkLoggedIn().subscribe(
+                          (resp) => {
+                              this.userData = resp;
+                              this.userType = this.userData.user_type;
+                          },
+                          (error) => {
+                              this.userData = {};
+                          }
+                      );
                   }
                 }
-              )
+              );
               
                }
 
@@ -67,18 +78,30 @@ export class CourseListPage implements OnInit {
     }
 
     getCoursesList() {
+      this.courseList = [];
+      let date = this.getCurrentDate();
       this.loaderService.presentLoading();
       this.coursesService.getCourses(this.status,this.studyLevelId, this.courseId, this.startDate)
       .subscribe(
-        (resp) => {
-          this.courseList = resp;
-          this.loaderService.dismissLoading();
+        (resp : any) => {
+          if(resp.length) {
+          for(let c of resp) {
+            if(c.start_date > date) {
+              this.courseList.push(c);
+            }
+          }
+       
           if(this.courseList.length) {
             this.showData = true;
           }
           else{
             this.showData = false;
           }
+        }
+        else {
+          this.showData = false;
+        }
+        this.loaderService.dismissLoading();
         },
         (error) => {
           this.loaderService.dismissLoading();
@@ -111,8 +134,27 @@ export class CourseListPage implements OnInit {
     }
     }
 
+    getCurrentDate() {
+      let date = new Date();
+      let mm : any;
+      let dd : any;
+      dd = date.getDate();
+      if(dd < 9) {
+        dd = '0' + dd;
+      }
+      mm = date.getMonth() + 1;
+      if(mm <= 9) {
+        mm = '0' + mm;
+      }
+      let yyyy = date.getFullYear();
+      return yyyy + '-' + mm + '-' + dd;
+    }
+
     courseDetail(id) {
       this.navCtrl.navigateForward('course-detail/' + id);
+    }
+    chat(teacherId) {
+      this.navCtrl.navigateForward('chat/' + teacherId);
     }
 
 }

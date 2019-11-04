@@ -49,9 +49,9 @@
             <p *ngIf ="emailExist" style="color : red">This email has already been taken..</p>
             <ion-item>
                 <ion-label position="floating" >Phone No</ion-label>
-                <ion-input name="phone"  formControlName="phone" ></ion-input>
+                <ion-input name="phone"  formControlName="phone_no" ></ion-input>
             </ion-item>
-            <p *ngIf ="hasError('phone', 'pattern')" style="color : red">Phone only contain numbers.</p>
+            <p *ngIf ="hasError('phone_no', 'pattern')" style="color : red">Phone only contain numbers.</p>
             </form>
       </ion-list>
     </ion-card>

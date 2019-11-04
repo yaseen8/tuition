@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { BookCourseService } from '../../services/book-course/book-course.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoaderService } from '../../services/loader/loader.service';
+import {HomeService} from "../../services/home/home.service";
 
 @Component({
   selector: 'app-home',
@@ -19,14 +20,16 @@ export class HomePage {
   pending: number;
   loggedIn : boolean = false;
   study_level : number;
-
+  homeContent: any = {};
 
   constructor(private studyLevelService : StudyLevelService,
               private subjectService : SubjectService,
               private navCtrl : NavController,
               private bookCourseService : BookCourseService,
               private authService : AuthService,
-              private loaderService : LoaderService) {
+              private loaderService : LoaderService,
+              private homeService: HomeService) {
+      this.homeContent = '<p>Loading....</p>'
                   this.onGoing = 0;
                   this.pending = 0;
                   this.course = 0;
@@ -52,7 +55,15 @@ export class HomePage {
               }
 
     ngOnInit(){
+        this.getContent();
         this.getStudyLevelList();
+    }
+    getContent() {
+      this.homeService.getHomeContent().subscribe(
+          (resp) => {
+              this.homeContent = resp['content'];
+          }
+      )
     }
 
   getStudyLevelList() {
