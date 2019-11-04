@@ -26,9 +26,17 @@
   </ion-card>
   <ion-card class="welcome-card section-card">
     <ion-button color="secondary" expand="block" (click)="login()" [disabled] ="!fg.valid">Sign In</ion-button>
+<!--    <p>Forgot password? No issues, tap on chat icon to get instant support in recovering your password.</p>-->
+    <a class="forgot" (click) = "presentForgotPassword()">Forgot password?</a>
   </ion-card>
   <ion-card class="welcome-card section-card">
     <ion-button color="tertiary" expand="block" (click) = "goToRegister()">New? Register Now</ion-button>
   </ion-card>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <a href="whatsapp://send?phone=+923180574554">
+    <ion-fab-button>
+      <ion-icon name="chatbubbles"></ion-icon>
+    </ion-fab-button>
+  </a>
+  </ion-fab>
 </ion-content>

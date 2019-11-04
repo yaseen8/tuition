@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-    private webRoot: string = 'https://cors-anywhere.herokuapp.com/http://www.alphazzz.com/api/';
+    private webRoot: string = 'https://cors-anywhere.herokuapp.com/http://www.alphazzz.com/tuition/public/api/';
     // private webRoot: string = 'http://127.0.0.1:8000/api/';
-    private meidaServer: string = 'https://storage.googleapis.com/ainilm-com-bucket/';
+    private meidaServer: string = 'http://www.alphazzz.com/tuition/public/api/';
 
   constructor() { }
     prepRoute(path: string, q?: any) {
@@ -29,7 +29,22 @@ export class ConfigService {
         return this.webRoot + path + query;
     }
 
-    prepMediaUrl(media) {
-        return this.meidaServer + media;
+    prepMediaUrl(path: string) {
+        // let query = '';
+        // if (q) {
+        //     query = '?';
+        //     let c = 0;
+        //     for (let key in q) {
+        //         if (c > 0) {
+        //             query += '&';
+        //         }
+        //         if (q[key]) {
+        //             query += key + '=' + q[key];
+        //         }
+        //         c++;
+        //     }
+        // }
+
+        return this.meidaServer + path;
     }
 }

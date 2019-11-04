@@ -21,4 +21,10 @@ export class UserService {
   regiter(data) {
     return this.http.post(this.apiService.getRoute('create'), data);
   }
+  forgotPassword(data) {
+    return this.http.post(this.apiService.getRoute('users/forgot_password'), data);
+  }
+  userData(id) {
+    return this.http.get(this.apiService.getRoute('users/user_data/' + id));
+  }
 }

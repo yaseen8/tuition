@@ -11,7 +11,7 @@ export class ApiService {
         return this.apiConf.prepRoute(p, q);
     }
 
-    getMediaUrl(media) {
-        return this.apiConf.prepMediaUrl(media);
+    getMediaUrl(p: string) {
+        return this.apiConf.prepMediaUrl(p);
     }
 }
