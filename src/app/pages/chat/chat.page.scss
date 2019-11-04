@@ -1,0 +1,21 @@
+@import "src/theme/variables.scss";
+
+.message{
+  padding: .5rem;
+  border-radius: 3px;
+  &-head{
+    color: #564875;
+    margin:0;
+  }
+  &-guard{
+    background: lighten(#654e98, 15);
+    color: white;
+  }
+  &-employee{
+    background: darken(#564875, 15);
+    color: white;
+  }
+  .font-weight-light{
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text>Chat List</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf = "showData">
+    <ion-list *ngIf="userType === 'student'">
+      <ion-item *ngFor="let list of chatList" (click)="chat(list.teacher.id)" >
+        {{list.teacher.name}}
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="userType === 'teacher'">
+      <ion-item *ngFor="let list of chatList" (click)="chat(list.student.id)" >
+        {{list.student.name}}
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ng-container *ngIf = "!showData">
+    <ion-list>
+      <ion-item>
+        No Chat Yet
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+
+</ion-content>
