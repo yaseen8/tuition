@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary" class="alpha-header">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Promotions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="showData">
+    <ion-item *ngFor="let item of promotionList">
+      {{item.body}}
+    </ion-item>
+  </ion-list>
+    <ion-card class="welcome-card" *ngIf="!showData">
+      <ion-card-content>
+        <h2>Many promotions are near to launch, Stay tuned </h2>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

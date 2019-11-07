@@ -15,8 +15,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401) {
-                // this.storage.clear();
-                // this.navCtrl.navigateForward('login');
+                this.storage.clear();
+                this.navCtrl.navigateForward('login');
                 // auto logout if 401 response returned from api
                 // location.reload(true);
             }
