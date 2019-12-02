@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color='light'>
   <ng-container *ngIf = "showData">
     <ion-list *ngIf="userType === 'student'">
       <ion-item *ngFor="let list of chatList" (click)="chat(list.teacher.id)" >

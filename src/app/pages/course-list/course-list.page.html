@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary" class="alpha-header">
+  <ion-toolbar color="secondary" class="alpha-header">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,39 +9,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color='light'>
+<ion-content>
     <div class="alpha-bg-lite">
   <ion-card class="transparent">
     <ion-button color="primary" expand="block" (click)="presentModal()">Search Courses</ion-button>
   </ion-card>
   <ng-container *ngIf="showData">
-  <ion-card *ngFor = "let sub of courseList" class="welcome-card section-card">
-    <ion-item>
-      <ion-card-title size="4">{{sub.title}}</ion-card-title>
-    </ion-item>
-    <ion-item>
-      <ion-label class="author"><strong>Fee:</strong> </ion-label>
-      <ion-button fill="outline" slot="end">{{sub.course_fee.fee}} PKR</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label class="author"><strong>Teacher: </strong>{{sub.teacher.name}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="time">Timings from {{sub.schedule[0].start_time}} | {{sub.schedule[0].end_time}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="date">Starting from {{sub.start_date }}</ion-label>
-    </ion-item>
-    <ion-item>
+  <div *ngFor = "let sub of courseList" class="welcome-card section-card">
+    <h2>{{sub.title}}</h2>
+    <h3 class="author"><strong>Fee:</strong> {{sub.course_fee.fee}} PKR</h3>
+    <!--<h4 class="author"><strong>Teacher: </strong>{{sub.teacher.name}}</h4>-->
+    <h4 class="author"><strong>Starting from</strong> {{sub.start_date }}  -- <strong>Timings:</strong> {{sub.schedule[0].start_time}} | {{sub.schedule[0].end_time}}</h4>
+    
+    <div style="margin-top: 10px;">
       <ion-chip *ngFor = "let day of sub.schedule">
         <ion-label>{{day.day | days }}</ion-label>
       </ion-chip>
-    </ion-item>
-    <ion-item>
-      <ion-button color='secondary' (click) ="courseDetail(sub.id)">View Details</ion-button>
-      <ion-button color="primary" *ngIf="userType === 'student'" (click) ="chat(sub.teacher.id)">Message</ion-button>
-    </ion-item>
-  </ion-card>
+    </div>
+    <ion-button color='medium' (click) ="courseDetail(sub.id)">View Details</ion-button>
+    <!--<ion-button color="primary" *ngIf="userType === 'student'" (click) ="chat(sub.teacher.id)">Message</ion-button>-->
+      
+  </div>
 </ng-container>
 <ng-container *ngIf="!showData">
   <ion-card class="welcome-card">

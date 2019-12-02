@@ -9,8 +9,18 @@
 html, body, h1, h2, h3, h4, h5, p, span{
   font-family: 'Roboto', sans-serif;
 }
+ion-content{
+  --ion-background-color: transparent;
+}
+ion-content{
+  background: url(src/assets/images/home-img.png) no-repeat top center #ffffff;
+  background-size: cover;
+}
+ion-content.homepage{
+  background: url(src/assets/images/banner.png) no-repeat top center #ffffff;
+  background-size: cover;
+}
 .alpha-bg-lite{
-  background: url(src/assets/images/banner.png) no-repeat top center;
   display: flex;
   flex-flow: column;
   min-height: 100%;

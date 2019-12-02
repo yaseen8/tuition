@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary" class="alpha-header">
+  <ion-toolbar color="secondary" class="alpha-header">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,18 +9,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color='light'>
+<ion-content class="homepage">
     <div class="alpha-bg-lite">
       <ion-card *ngIf="pending" (click)="goToPayment()" class="welcome-card attention-card">
         <h4>You have registered for <ion-badge color="warning">{{pending}}</ion-badge> course(s), but have not confirmed payment. Click to confirm.</h4>
       </ion-card>
 
       <ion-card *ngIf="onGoing" (click)="goToBooking('in_progress')" class="welcome-card goodnews-card">
-        <h4>You have <ion-badge color="seccess">{{onGoing}}</ion-badge> course(s) in-progress. Click to view</h4>
+        <h4>You have <ion-badge color="success">{{onGoing}}</ion-badge> course(s) in-progress. Click to view</h4>
       </ion-card>
 
       <ion-card class="welcome-card">
-          <div style="color: white" [innerHtml] = "homeContent"></div>
+          <div style="color: white">
+          <h1>Welcome<br><span>A quick tool to find best online tuitions for you!</span></h1>
+          <h4>Register for course and chat with teacher for more info any time</h4>
+          </div>
       </ion-card>
 
       <ion-card class="welcome-card button-card">

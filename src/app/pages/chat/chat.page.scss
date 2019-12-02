@@ -1,5 +1,13 @@
 @import "src/theme/variables.scss";
-
+ion-grid{
+  -webkit-padding-start: 10px;
+  -webkit-padding-end: 10px;
+  -webkit-padding-top: 10px;
+  -webkit-padding-bottom: 10px;
+}
+ion-row{
+  -webkit-margin-bottom:10px;
+}
 .message{
   padding: .5rem;
   border-radius: 3px;
@@ -10,12 +18,21 @@
   &-guard{
     background: lighten(#654e98, 15);
     color: white;
+    p{
+      margin: 0 !important;
+      font-optical-sizing: 12px;
+    }
   }
   &-employee{
     background: darken(#564875, 15);
     color: white;
+    p{
+      margin: 0 !important;
+      font-optical-sizing: 12px;
+    }
   }
   .font-weight-light{
     font-size: 10px;
+    margin:0 !important;
   }
 }
