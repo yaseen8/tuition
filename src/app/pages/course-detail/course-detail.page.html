@@ -37,11 +37,12 @@
       <ion-label class="time"><strong>Timings:</strong> {{courseDetail.schedule[0].start_time}} to {{courseDetail.schedule[0].end_time}}</ion-label>
     </ion-item>
     <ion-item>
+      <ion-button color="primary" slot='start' *ngIf="userType === 'student'" expand="block"  (click) ="chat(courseDetail.teacher.id)">Message To Teacher</ion-button>
       <ion-button *ngIf="checkAlreadyBookedOrDate(courseDetail.start_date)" slot='end' color="secondary" expand="block" (click)= "bookCourse(courseDetail.id)">Register Now</ion-button>
     </ion-item>
   </ion-card>
   <ion-card class="welcome-card section-card">
-    <div class="description">
+    <div class="description" *ngIf="courseDescription">
       <div class="tabs">
         <a class="tab active">Course Details</a>
       </div>
@@ -51,12 +52,12 @@
     </div>
   </ion-card>
   <ion-card class="welcome-card section-card">
-      <div class="description">
+      <div class="description" *ngIf="teacherDescription">
         <div class="tabs">
           <a class="tab active">About Teacher</a>
         </div>
         <div class="description-text">
-          <div [innerHTML]="teacherDescription" ]></div>
+          <div [innerHTML]="teacherDescription"></div>
         </div>
       </div>
     </ion-card>

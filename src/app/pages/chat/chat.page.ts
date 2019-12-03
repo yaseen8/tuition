@@ -54,7 +54,7 @@ export class ChatPage implements OnInit {
   }
 
   getChat() {
-    // this.loaderService.presentLoading();
+    this.loaderService.presentLoading();
     this.chatService.getChat(this.userData.id, this.userId, this.userData.user_type).subscribe(
         (resp) => {
           console.log(resp);
@@ -65,11 +65,11 @@ export class ChatPage implements OnInit {
           else {
             this.showData = false;
           }
-          // this.loaderService.dismissLoading();
+          this.loaderService.dismissLoading();
         },
         (error) => {
           this.showData = false;
-          // this.loaderService.dismissLoading();
+          this.loaderService.dismissLoading();
         }
     )
   }

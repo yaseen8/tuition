@@ -26,9 +26,7 @@
         <ion-label>{{day.day | days }}</ion-label>
       </ion-chip>
     </div>
-    <ion-button color='medium' (click) ="courseDetail(sub.id)">View Details</ion-button>
-    <!--<ion-button color="primary" *ngIf="userType === 'student'" (click) ="chat(sub.teacher.id)">Message</ion-button>-->
-      
+    <ion-button color='primary' (click) ="courseDetail(sub.id)">View Details</ion-button>
   </div>
 </ng-container>
 <ng-container *ngIf="!showData">

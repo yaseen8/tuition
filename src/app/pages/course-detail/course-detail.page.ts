@@ -19,6 +19,7 @@ export class CourseDetailPage implements OnInit {
   alreadyBookedCourse : boolean = false;
   courseDescription : string;
   teacherDescription : string;
+  userType: string;
 
   constructor(private activatedRoute : ActivatedRoute,
               private courseService : CoursesService,
@@ -62,8 +63,9 @@ export class CourseDetailPage implements OnInit {
   checkLogin() {
     this.authService.checkLoggedIn()
     .subscribe(
-      (resp) => {
+      (resp: any) => {
         this.userLoggedIn = true;
+        this.userType = resp.user_type;
       },
       (error) => {
         this.userLoggedIn = false;
@@ -127,5 +129,7 @@ export class CourseDetailPage implements OnInit {
     this.navCtrl.navigateForward('register/' + courseId);
   }
   }
-
+  chat(teacherId) {
+      this.navCtrl.navigateForward('chat/' + teacherId);
+  }
 }
